@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server); // Initialize Socket.IO with the server
 
-// Connect to MongoDB
+
 mongoose
   .connect("mongodb://localhost:27017/alga", {
     useNewUrlParser: true,
@@ -25,10 +25,10 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 
-// Initialize socket connections
-initializeDriverSocket(io);
+
+  initializeDriverSocket(io);
 initializePassengerSocket(io);
-// Middleware for JSON
+
 app.use(express.json());
 
 // Define your API routes
